@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "node cli工具实现",
   "main": "index.js",
+  "bin": {
+    "cobyte": "./bin/cobyte.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
