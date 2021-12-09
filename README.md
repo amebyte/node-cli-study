@@ -42,6 +42,30 @@ npm link
 
 ```
 // 先安装依赖
-npm i commander download-git-repo ora handlebars figlet clear chalk open watch -s
+npm i commander download-git-repo ora handlebars figlet clear chalk open watch -S
+```
+
+在`"./bin/cobyte.js"` 这个文件的继续写上：
+
+```javascript
+import program from 'commander'
+program.version('1.0.0')
+program.command('init <name>')
+    .description('init project')
+    .action(name => {
+        console.log('init:', name)
+    })
+program.parse(process.argv)
+```
+
+再执行cobyte命令看看结果：
+
+ ![](./md/01.png)
+
+然后我们可以继续输入其他命令进行查看结果
+
+```
+cobyte -V
+cobyte init aaa
 ```
 
