@@ -38,3 +38,10 @@ npm link
 
 然后就可以执行`cobyte`命令了。
 
+定制命令行界面
+
+```
+// 先安装依赖
+npm i commander download-git-repo ora handlebars figlet clear chalk open watch -s
+```
+
