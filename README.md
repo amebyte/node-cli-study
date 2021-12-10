@@ -86,4 +86,32 @@ export default async name => {
 
  ![](./md/02.png)
 
-然后就可以输出上面的界面了
+然后就可以输出上面的界面了，虽然是一些表面工作，但会给我们很好的仪式感。
+
+编写下载模板函数
+
+```javascript
+import {promisify} from 'util'
+import download from 'download-git-repo'
+import ora from 'ora'
+
+export default async function (repo, desc) {
+    const down = promisify(download)
+    const process = ora(`🚕 下载 ... ${repo}`)
+    // 显示进度条
+    process.start()
+    await down(repo, desc)
+    process.succeed()
+}
+```
+
+然后在init里面进行下载
+
+```javascript
+// 下载空模版
+log(`🚀 创建 ${name}`)
+await download('github:amebyte/cli-vue-template', name)
+```
+
+ ![](./md/03.png)
+
