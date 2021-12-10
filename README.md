@@ -69,3 +69,21 @@ cobyte -V
 cobyte init aaa
 ```
 
+编写欢迎界面
+
+```javascript
+import figlet from 'figlet'
+import clear from 'clear'
+import chalk from 'chalk'
+
+const log = content => console.log(chalk.green(content))
+export default async name => {
+    // 打印欢迎界面
+    clear() // 清屏
+    log(figlet.textSync('cobyte welcome'))
+}
+```
+
+ ![](./md/02.png)
+
+然后就可以输出上面的界面了
