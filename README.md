@@ -3,7 +3,7 @@ node cli工具实现
 
 
 
-先初始化
+### 先初始化
 
 ```
 npm ini -y
@@ -17,7 +17,7 @@ npm ini -y
 
 这段代码的意思是指定脚本解析器类型，本来shell环境只能执行B-shell文件，如果要执行JavaScript文件则需要指定解析器为node。
 
-配置package.json文件
+### 配置package.json文件
 
 ```javascript
 {
@@ -29,7 +29,7 @@ npm ini -y
 
 这个配置的意思是说，这个指令名称是`cobyte` 运行之后执行的是`"./bin/cobyte.js"` 这个文件的代码
 
-本地虚拟挂载
+### 本地虚拟挂载
 
 ```
 #将npm 模块链接到对应的运行项目中去
@@ -38,7 +38,7 @@ npm link
 
 然后就可以执行`cobyte`命令了。
 
-定制命令行界面
+### 定制命令行界面
 
 ```
 // 先安装依赖
@@ -69,7 +69,7 @@ cobyte -V
 cobyte init aaa
 ```
 
-编写欢迎界面
+### 编写欢迎界面
 
 ```javascript
 import figlet from 'figlet'
@@ -88,7 +88,7 @@ export default async name => {
 
 然后就可以输出上面的界面了，虽然是一些表面工作，但会给我们很好的仪式感。
 
-编写下载模板函数
+### 编写下载模板函数
 
 ```javascript
 import {promisify} from 'util'
@@ -117,7 +117,7 @@ await download('github:amebyte/cli-vue-template', name)
 
 执行命令会出现以上界面
 
-安装依赖 
+### 安装依赖 
 
 安装依赖需要运行命令，需要用到没`spawn` 
 
