@@ -115,3 +115,45 @@ await download('github:amebyte/cli-vue-template', name)
 
  ![](./md/03.png)
 
+执行命令会出现以上界面
+
+安装依赖 
+
+安装依赖需要运行命令，需要用到没`spawn` 
+
+重新`spawn` 为 `Promise` 风格函数
+
+```javascript
+const spawnPromise = async (...args) => {
+    return new Promise(resolve => {
+        const child = spawn(...args)
+
+        // 输出流
+        child.stdout.pipe(process.stdout)
+        child.stderr.pipe(process.stderr)
+        child.on('close', () => {
+            resolve()
+        })
+    })
+}
+```
+
+注意：windows下npm执行名不同 
+
+```javascript
+log('🚲安装依赖 ...')
+    await spawnPromise(process.platform === "win32" ? "npm.cmd" : "npm", ['install'], {cwd: `./${name}`})
+    log(`
+    👌安装完成：
+    To get Start:
+    ===========================
+        cd ${name}
+        npm run serve
+    ===========================
+                `);
+```
+
+然后执行命令出现一下界面
+
+ ![](./md/04.png)
+
