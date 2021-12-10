@@ -142,18 +142,33 @@ const spawnPromise = async (...args) => {
 
 ```javascript
 log('🚲安装依赖 ...')
-    await spawnPromise(process.platform === "win32" ? "npm.cmd" : "npm", ['install'], {cwd: `./${name}`})
-    log(`
-    👌安装完成：
-    To get Start:
-    ===========================
-        cd ${name}
-        npm run serve
-    ===========================
-                `);
+const npms = process.platform === "win32" ? "npm.cmd" : "npm"
+await spawnPromise(npms, ['install'], {cwd: `./${name}`})
+log(`
+👌安装完成：
+To get Start:
+===========================
+cd ${name}
+npm run serve
+===========================
+`);
 ```
 
 然后执行命令出现一下界面
 
  ![](./md/04.png)
+
+自动打开浏览器
+
+```
+// 自动打开浏览器
+open('http://localhost:8080')
+```
+
+自动运行调试环境 
+
+```
+//自动运行调试环境
+await spawnPromise(npms, ['run', 'serve'], {cwd: `./${name}`})
+```
 
